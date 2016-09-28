@@ -7,40 +7,6 @@
     android:orientation="vertical">
 
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:background="@color/colorPrimary">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="WorkFromHome"
-                android:id="@+id/textFecha2"
-                android:background="@color/colorPrimary"
-                android:textColor="@color/colorEnIngles"/>
-
-            <menu xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                tools:context="com.example.miapp.MainActivity">
-                <item android:id="@+id/nuevaOferta"
-                    android:title="Crear Una Oferta"
-                    app:showAsAction="ifRoom"/>
-
-                <item android:id="@+id/menu2"
-                    android:orderInCategory="100"
-                    android:title="Ver mis ofertas"
-                    app:showAsAction="never" />
-            </menu>
-        </LinearLayout>
-
-    </android.support.v7.widget.Toolbar>
-
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
