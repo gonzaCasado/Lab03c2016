@@ -20,6 +20,8 @@ import java.util.List;
  */
 public class Adapter extends ArrayAdapter<Trabajo> {
     LayoutInflater inflater;
+    String actual;
+
     Adapter(Context context, List<Trabajo> items) {
         super(context, R.layout.layout_fila, items);
         inflater= LayoutInflater.from(context);
@@ -65,11 +67,19 @@ public class Adapter extends ArrayAdapter<Trabajo> {
         row.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Toast.makeText(getContext(), getItem(position).getDescripcion().toString(), Toast.LENGTH_LONG).show();
+                    setActual(getItem(position).getDescripcion().toString());
                 return false;
             }
         });
+
         return(row);
+    }
+
+    private void setActual(String actual){
+        this.actual = actual;
+    }
+    public String getActual(){
+        return actual;
     }
 
 }
