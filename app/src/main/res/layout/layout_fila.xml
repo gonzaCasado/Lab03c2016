@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textCategoria" />
+        android:id="@+id/textCategoria"
+        android:textColor="@color/colorEnIngles"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/textDescripcion"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/colorEnIngles"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -26,25 +28,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Horas:"
-            android:id="@+id/textHoras" />
+            android:id="@+id/textHoras"
+            android:textColor="@color/colorEnIngles"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Text"
-            android:id="@+id/textHoras2" />
+            android:id="@+id/textHoras2"
+            android:textColor="@color/colorEnIngles"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Max $/Hora:"
-            android:id="@+id/textPrecioHora" />
+            android:id="@+id/textPrecioHora"
+            android:textColor="@color/colorEnIngles" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Text"
-            android:id="@+id/textPrecioHora2" />
+            android:id="@+id/textPrecioHora2"
+            android:textColor="@color/colorEnIngles"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -62,19 +68,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fecha Fin:"
-        android:id="@+id/textFecha" />
+        android:id="@+id/textFecha"
+        android:textColor="@color/colorEnIngles"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textFecha2" />
+        android:id="@+id/textFecha2"
+        android:textColor="@color/colorEnIngles"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="En Ingles"
         android:id="@+id/checkBox"
-        android:enabled="false" />
+        android:enabled="false"
+        android:checked="false"
+        android:textColor="@color/colorEnIngles"
+        android:buttonTint="@color/colorEnIngles"
+        />
 </LinearLayout>
 </LinearLayout>

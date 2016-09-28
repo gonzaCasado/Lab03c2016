@@ -8,8 +8,11 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,15 +24,21 @@ public class Adapter extends ArrayAdapter<Trabajo> {
         super(context, R.layout.layout_fila, items);
         inflater= LayoutInflater.from(context);
     }
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         DecimalFormat df= new DecimalFormat("#.##");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
         View row=inflater.inflate(R.layout.layout_fila, parent, false);
         TextView categoria = (TextView) row.findViewById(R.id.textCategoria);
-        //categoria.setText();
+        categoria.setText(this.getItem(position).getCategoria().getDescripcion().toString());
         TextView descripcion = (TextView) row.findViewById(R.id.textDescripcion);
-        TextView horas = (TextView) row.findViewById(R.id.textFecha2);
+        descripcion.setText(this.getItem(position).getDescripcion().toString());
+        TextView horas = (TextView) row.findViewById(R.id.textHoras2);
+        horas.setText(this.getItem(position).getHorasPresupuestadas().toString() + " ");
         TextView costo = (TextView) row.findViewById(R.id.textPrecioHora2);
+        costo.setText(df.format(Double.parseDouble(this.getItem(position).getPrecioMaximoHora().toString()))+"  ");
         TextView fecha = (TextView) row.findViewById(R.id.textFecha2);
+        fecha.setText("  " + dateFormat.format((Date) this.getItem(position).getFechaEntrega()));
         ImageView icon=(ImageView) row.findViewById(R.id.imageView);
         CheckBox ingles = (CheckBox) row.findViewById(R.id.checkBox);
 
@@ -48,10 +57,19 @@ public class Adapter extends ArrayAdapter<Trabajo> {
         else icon.setImageResource(R.drawable.br);
 
         if(this.getItem(position).getRequiereIngles()== true){
-            ingles.setSelected(true);
+            ingles.setChecked(true);
         }
-        else ingles.setSelected(false);
+        else ingles.setChecked(false);
 
+
+        row.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(getContext(), getItem(position).getDescripcion().toString(), Toast.LENGTH_LONG).show();
+                return false;
+            }
+        });
         return(row);
     }
+
 }

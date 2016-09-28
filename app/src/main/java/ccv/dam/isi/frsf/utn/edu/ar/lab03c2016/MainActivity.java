@@ -2,7 +2,9 @@ package ccv.dam.isi.frsf.utn.edu.ar.lab03c2016;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.Arrays;
 
@@ -17,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
         Adapter adapter= new Adapter(getApplicationContext(), Arrays.asList(trabajos));
         lista.setAdapter(adapter);
+
+
     }
 
     public static final Trabajo[] trabajos = new Trabajo[]{
