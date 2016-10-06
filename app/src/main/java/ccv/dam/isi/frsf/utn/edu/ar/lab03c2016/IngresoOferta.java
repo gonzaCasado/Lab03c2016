@@ -17,7 +17,6 @@ import java.util.Arrays;
 
 public class IngresoOferta extends AppCompatActivity {
 
-    int monedaSeleccionado;
     private String TAG;
 
     @Override
@@ -74,23 +73,18 @@ public class IngresoOferta extends AppCompatActivity {
                                 Log.v(TAG,"CASE -1");
                                 break;
                             case R.id.radioButtonAR:
-                                monedaSeleccionado=2;
                                 Log.e(TAG,"CASE MONEDA 2");
                                 break;
                             case R.id.radioButtonBR:
-                                monedaSeleccionado=4;
                                 Log.e(TAG,"CASE MONEDA 4");
                                 break;
                             case R.id.radioButtonEU:
-                                monedaSeleccionado=1;
                                 Log.e(TAG,"CASE MONEDA 1");
                                 break;
                             case R.id.radioButtonUK:
-                                monedaSeleccionado=3;
                                 Log.e(TAG,"CASE MONEDA 3");
                                 break;
                             case R.id.radioButtonUS:
-                                monedaSeleccionado=0;
                                 Log.e(TAG,"CASE MONEDA 0");
                                 break;
                         }
@@ -98,10 +92,21 @@ public class IngresoOferta extends AppCompatActivity {
 
                     }
                 });
+                int monedaSeleccionado=8;
 
+                if (radioGroup.getCheckedRadioButtonId()==R.id.radioButtonAR)
+                    monedaSeleccionado=2;
+                if (radioGroup.getCheckedRadioButtonId()==R.id.radioButtonUS)
+                    monedaSeleccionado=0;
+                if (radioGroup.getCheckedRadioButtonId()==R.id.radioButtonBR)
+                    monedaSeleccionado=4;
+                if (radioGroup.getCheckedRadioButtonId()==R.id.radioButtonUK)
+                    monedaSeleccionado=3;
+                if (radioGroup.getCheckedRadioButtonId()==R.id.radioButtonEU)
+                    monedaSeleccionado=1;
                 //Trabajo trabajo = new Trabajo(20, datosIngresados.getText().toString(), seleccionCategoria, monedaSeleccionado);
 
-                //Toast.makeText(getApplicationContext(),"Hola " + monedaSeleccionado,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Hola " + monedaSeleccionado,Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                 intent.putExtra("descripcion",datosIngresados.getText().toString());
