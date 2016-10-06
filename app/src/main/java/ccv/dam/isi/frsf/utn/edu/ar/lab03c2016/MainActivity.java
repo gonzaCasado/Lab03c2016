@@ -30,47 +30,49 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         lista = (ListView) findViewById(R.id.listView);
         int cantidad = trabajos.length;
-
-        adapter= new Adapter(getApplicationContext(), Arrays.asList(trabajos));
         Bundle extras = getIntent().getExtras();
 
-        if (extras!=null) {
-            String desc = extras.getString("descripcion");
-            String cat = extras.getString("categoria");
-            int moneda = extras.getInt("monedaSeleccionado");
-            Toast.makeText(getApplicationContext(),desc + cat , Toast.LENGTH_LONG).show();
-        }
-
-
-       /* if(extras != null){
+        if(extras != null){
 
             String desc = extras.getString("descripcion");
             String cat = extras.getString("categoria");
-            int moneda = extras.getInt("monedaSeleccionado");
+            int moneda = extras.getInt("idioma");
 
             if (cat.equals("Arquitecto")){
                 Categoria categoria = new Categoria(1,"Arquitecto");
+                trabajos[0] = new Trabajo(cantidad, desc, categoria, moneda);
             }
             else if (cat.equals("Desarrollador")){
                 Categoria categoria = new Categoria(2,"Desarrollador");
+                trabajos[0] = new Trabajo(cantidad, desc, categoria, moneda);
             }
 
             else if (cat.equals("Tester")){
                 Categoria categoria = new Categoria(3,"Tester");
+                trabajos[0] = new Trabajo(cantidad, desc, categoria, moneda);
             }
 
             else if (cat.equals("Analista")){
                 Categoria categoria = new Categoria(4,"Analista");
+                trabajos[0] = new Trabajo(cantidad, desc, categoria, moneda);
             }
 
             else if (cat.equals("Mobile Developer")){
                 Categoria categoria = new Categoria(5,"Mobile Developer");
+                trabajos[0] = new Trabajo(cantidad, desc, categoria, moneda);
 
             }
 
+        }
 
-            trabajos[cantidad] = new Trabajo(cantidad, desc, categoria, moneda);
+        adapter= new Adapter(getApplicationContext(), Arrays.asList(trabajos));
+/*
+        if (extras!=null) {
+            String desc = extras.getString("descripcion");
+            String cat = extras.getString("categoria");
+            int moneda = extras.getInt("idioma");
 
+            //Toast.makeText(getApplicationContext(),desc + cat + moneda ,Toast.LENGTH_SHORT).show();
         }*/
 
 
@@ -125,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 
     public static Trabajo[] trabajos = new Trabajo[]{
