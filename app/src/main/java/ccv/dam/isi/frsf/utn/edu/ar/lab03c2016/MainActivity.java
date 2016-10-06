@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     ListView lista;
     Adapter adapter;
- //   Categoria categoria;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +30,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         lista = (ListView) findViewById(R.id.listView);
         int cantidad = trabajos.length;
+
         Bundle extras = getIntent().getExtras();
-
-
 
         ArrayList listaa = new ArrayList();
         listaa.addAll(Arrays.asList(trabajos));
@@ -47,35 +45,25 @@ public class MainActivity extends AppCompatActivity {
 
             if (cat.equals("Arquitecto")){
                 Categoria categoria = new Categoria(1,"Arquitecto");
-                trabajos[cantidad-1] = new Trabajo(cantidad, desc, categoria, moneda);
-                cantidad=cantidad+1;
                 listaa.add(new Trabajo(cantidad, desc, categoria, moneda));
             }
             else if (cat.equals("Desarrollador")){
                 Categoria categoria = new Categoria(2,"Desarrollador");
-                trabajos[cantidad-1] = new Trabajo(cantidad, desc, categoria, moneda);
-                cantidad=cantidad+1;
                 listaa.add(new Trabajo(cantidad, desc, categoria, moneda));
             }
 
             else if (cat.equals("Tester")){
                 Categoria categoria = new Categoria(3,"Tester");
-                trabajos[cantidad-1] = new Trabajo(cantidad, desc, categoria, moneda);
-                cantidad=cantidad+1;
                 listaa.add(new Trabajo(cantidad, desc, categoria, moneda));
             }
 
             else if (cat.equals("Analista")){
                 Categoria categoria = new Categoria(4,"Analista");
-                trabajos[cantidad-1] = new Trabajo(cantidad, desc, categoria, moneda);
-                cantidad=cantidad+1;
                 listaa.add(new Trabajo(cantidad, desc, categoria, moneda));
             }
 
             else if (cat.equals("Mobile Developer")){
                 Categoria categoria = new Categoria(5,"Mobile Developer");
-                trabajos[cantidad-1] = new Trabajo(cantidad, desc, categoria, moneda);
-                cantidad=cantidad+1;
                 listaa.add(new Trabajo(cantidad, desc, categoria, moneda));
 
             }
@@ -118,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 i.setType("text/plain");
                 i.putExtra(Intent.EXTRA_SUBJECT, "Oferta Laboral");
                 this.startActivity(Intent.createChooser(i, "Compartir"));
+
                 return true;
             default:
                 return super.onContextItemSelected(item);
