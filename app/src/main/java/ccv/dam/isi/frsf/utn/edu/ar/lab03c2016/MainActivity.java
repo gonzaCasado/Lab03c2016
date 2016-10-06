@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,7 +33,13 @@ public class MainActivity extends AppCompatActivity {
         int cantidad = trabajos.length;
         Bundle extras = getIntent().getExtras();
 
+
+
+        ArrayList listaa = new ArrayList();
+        listaa.addAll(Arrays.asList(trabajos));
+
         if(extras != null){
+
 
             String desc = extras.getString("descripcion");
             String cat = extras.getString("categoria");
@@ -40,41 +47,43 @@ public class MainActivity extends AppCompatActivity {
 
             if (cat.equals("Arquitecto")){
                 Categoria categoria = new Categoria(1,"Arquitecto");
-                trabajos[0] = new Trabajo(cantidad, desc, categoria, moneda);
+                trabajos[cantidad-1] = new Trabajo(cantidad, desc, categoria, moneda);
+                cantidad=cantidad+1;
+                listaa.add(new Trabajo(cantidad, desc, categoria, moneda));
             }
             else if (cat.equals("Desarrollador")){
                 Categoria categoria = new Categoria(2,"Desarrollador");
-                trabajos[0] = new Trabajo(cantidad, desc, categoria, moneda);
+                trabajos[cantidad-1] = new Trabajo(cantidad, desc, categoria, moneda);
+                cantidad=cantidad+1;
+                listaa.add(new Trabajo(cantidad, desc, categoria, moneda));
             }
 
             else if (cat.equals("Tester")){
                 Categoria categoria = new Categoria(3,"Tester");
-                trabajos[0] = new Trabajo(cantidad, desc, categoria, moneda);
+                trabajos[cantidad-1] = new Trabajo(cantidad, desc, categoria, moneda);
+                cantidad=cantidad+1;
+                listaa.add(new Trabajo(cantidad, desc, categoria, moneda));
             }
 
             else if (cat.equals("Analista")){
                 Categoria categoria = new Categoria(4,"Analista");
-                trabajos[0] = new Trabajo(cantidad, desc, categoria, moneda);
+                trabajos[cantidad-1] = new Trabajo(cantidad, desc, categoria, moneda);
+                cantidad=cantidad+1;
+                listaa.add(new Trabajo(cantidad, desc, categoria, moneda));
             }
 
             else if (cat.equals("Mobile Developer")){
                 Categoria categoria = new Categoria(5,"Mobile Developer");
-                trabajos[0] = new Trabajo(cantidad, desc, categoria, moneda);
+                trabajos[cantidad-1] = new Trabajo(cantidad, desc, categoria, moneda);
+                cantidad=cantidad+1;
+                listaa.add(new Trabajo(cantidad, desc, categoria, moneda));
 
             }
 
         }
 
-        adapter= new Adapter(getApplicationContext(), Arrays.asList(trabajos));
-/*
-        if (extras!=null) {
-            String desc = extras.getString("descripcion");
-            String cat = extras.getString("categoria");
-            int moneda = extras.getInt("idioma");
 
-            //Toast.makeText(getApplicationContext(),desc + cat + moneda ,Toast.LENGTH_SHORT).show();
-        }*/
-
+        adapter= new Adapter(getApplicationContext(), listaa);
 
         lista.setAdapter(adapter);
         registerForContextMenu(lista);
@@ -129,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public static Trabajo[] trabajos = new Trabajo[]{
+    public Trabajo[] trabajos = new Trabajo[]{
             new Trabajo(1,"Proyecto ABc"),
             new Trabajo(2,"Sistema de Gestion"),
             new Trabajo(3, "Aplicacion XYZ"),
@@ -150,4 +159,6 @@ public class MainActivity extends AppCompatActivity {
             new Trabajo(18,"Sitio Coroporativo"),
             new Trabajo(19,"Aplicacion www1")
     };
+
+
 }
