@@ -8,7 +8,7 @@
 
 
         <item android:id="@+id/nuevaOferta"
-            android:title="Crear Ofertaa"
+            android:title="Crear Oferta"
             app:showAsAction="ifRoom"/>
         <item android:id="@+id/verOfertas"
             android:orderInCategory="100"

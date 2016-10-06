@@ -1,5 +1,6 @@
 package ccv.dam.isi.frsf.utn.edu.ar.lab03c2016;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     ListView lista;
     Adapter adapter;
+ //   Categoria categoria;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +29,54 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         lista = (ListView) findViewById(R.id.listView);
+        int cantidad = trabajos.length;
 
         adapter= new Adapter(getApplicationContext(), Arrays.asList(trabajos));
+        Bundle extras = getIntent().getExtras();
+
+        if (extras!=null) {
+            String desc = extras.getString("descripcion");
+            String cat = extras.getString("categoria");
+            int moneda = extras.getInt("monedaSeleccionado");
+            Toast.makeText(getApplicationContext(),desc + cat , Toast.LENGTH_LONG).show();
+        }
+
+
+       /* if(extras != null){
+
+            String desc = extras.getString("descripcion");
+            String cat = extras.getString("categoria");
+            int moneda = extras.getInt("monedaSeleccionado");
+
+            if (cat.equals("Arquitecto")){
+                Categoria categoria = new Categoria(1,"Arquitecto");
+            }
+            else if (cat.equals("Desarrollador")){
+                Categoria categoria = new Categoria(2,"Desarrollador");
+            }
+
+            else if (cat.equals("Tester")){
+                Categoria categoria = new Categoria(3,"Tester");
+            }
+
+            else if (cat.equals("Analista")){
+                Categoria categoria = new Categoria(4,"Analista");
+            }
+
+            else if (cat.equals("Mobile Developer")){
+                Categoria categoria = new Categoria(5,"Mobile Developer");
+
+            }
+
+
+            trabajos[cantidad] = new Trabajo(cantidad, desc, categoria, moneda);
+
+        }*/
+
+
         lista.setAdapter(adapter);
         registerForContextMenu(lista);
+
 
     }
 
@@ -39,11 +86,13 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo info){
         super.onCreateContextMenu(menu, view, info);
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_contextual,menu);
+
     }
 
     @Override
@@ -51,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch(item.getItemId()){
             case R.id.postularse:
-                Toast.makeText(this,"Usted ha sido postulado para esta oferta laboral: ",Toast.LENGTH_LONG);
+                Toast.makeText(this,"Usted ha sido postulado para esta oferta laboral: ",Toast.LENGTH_LONG).show();
                 return true;
             case R.id.compartir:
                 Intent i = new Intent(android.content.Intent.ACTION_SEND);
@@ -67,11 +116,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public boolean onOptionsItemSelected (MenuItem item){
+        switch (item.getItemId()){
+            case R.id.nuevaOferta:
+                Intent intent = new Intent (getApplicationContext(), IngresoOferta.class);
+                startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 
 
-
-    public static final Trabajo[] trabajos = new Trabajo[]{
+    public static Trabajo[] trabajos = new Trabajo[]{
             new Trabajo(1,"Proyecto ABc"),
             new Trabajo(2,"Sistema de Gestion"),
             new Trabajo(3, "Aplicacion XYZ"),
